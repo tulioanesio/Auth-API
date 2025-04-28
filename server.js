@@ -1,16 +1,13 @@
 import express from "express";
-import bcrypt from "bcrypt";
+import privateRoutes from "./routes/private.js";
 import publicRoutes from "./routes/public.js";
 
-import { PrismaClient } from "@prisma/client";
+import auth from "./middlewares/auth.js";
 
-const prisma = new PrismaClient();
+const app = express();
+app.use(express.json());
 
-const app = express()
-app.use(express.json())
-
-app.use("/", publicRoutes)
-
-
+app.use("/", publicRoutes);
+app.use("/", auth, privateRoutes);
 
 app.listen(3000, () => console.log("Servidor rodando!"));

@@ -1,12 +1,12 @@
 import express from "express";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 const router = express.Router();
 
-const JWT_SECRET = process.env.JWT_SECRET
+const JWT_SECRET = process.env.JWT_SECRET;
 
 router.post("/register", async (req, res) => {
   try {
@@ -41,11 +41,13 @@ router.post("/signin", async (req, res) => {
 
     const isMatch = await bcrypt.compare(userInfo.password, user.password);
 
-    if(!isMatch){
-        return res.status(400).json({ message: "Senha inválida" });
+    if (!isMatch) {
+      return res.status(400).json({ message: "Senha inválida" });
     }
 
-    res.status(200).json(user);
+    const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "1d" });
+
+    res.status(200).json(token);
   } catch (err) {
     res.status(500).json({ message: "Erro no servidor!" });
   }
