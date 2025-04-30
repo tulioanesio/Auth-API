@@ -66,7 +66,7 @@ To get this project up and running locally, follow these steps:
      ```
      The API will be available at: [http://localhost:3000](http://localhost:3000)
 
-6. ## Live Demo
+6. **Live Demo**:
 
    - The project is deployed and available on **Vercel**:
 
