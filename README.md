@@ -70,4 +70,4 @@ To get this project up and running locally, follow these steps:
 
    - The project is deployed and available on **Vercel**:
 
-   - [**Task Manager**](https://task-manager-sable-mu.vercel.app/)
+   - [**User Authentication**](https://auth-front-mu.vercel.app/)
