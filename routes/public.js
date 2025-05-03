@@ -8,7 +8,7 @@ const router = express.Router();
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
-router.post("/register", async (req, res) => {
+router.post("/signup", async (req, res) => {
   try {
     const user = req.body;
 
@@ -27,7 +27,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-router.post("/signin", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const userInfo = req.body;
 
