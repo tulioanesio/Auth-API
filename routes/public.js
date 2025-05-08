@@ -1,10 +1,12 @@
 import express from "express";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv"
 import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 const router = express.Router();
+dotenv.config()
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -23,6 +25,7 @@ router.post("/signup", async (req, res) => {
     });
     res.status(201).json(userDB);
   } catch (err) {
+    console.error(err)
     res.status(500).json({ message: "Erro no servidor!" });
   }
 });
@@ -50,6 +53,7 @@ router.post("/login", async (req, res) => {
     res.status(200).json(token);
   } catch (err) {
     res.status(500).json({ message: "Erro no servidor!" });
+    console.error(err)
   }
 });
 
