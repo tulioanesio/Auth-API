@@ -1,15 +1,16 @@
 # User Authentication API
 
-This repository contains the **backend** for a user authentication system built with **Node.js**, **Express**, **Prisma**, **MongoDB Atlas**, **JWT**, and **Bcrypt**.
+This repository contains the **backend** for a user authentication system built with **Node.js**, **Express**, **Prisma**, **PostgreSQL**, **JWT**, and **Bcrypt**.
 
 ## Technologies Used
 
-- **Node.js** – JavaScript runtime for building backend services.
-- **Express** – Minimalist web framework for Node.js.
-- **Prisma** – Type-safe ORM for working with MongoDB.
-- **MongoDB Atlas** – Cloud-hosted NoSQL database.
-- **JWT (JSON Web Tokens)** – Authentication and authorization mechanism.
-- **Bcrypt** – Secure hashing algorithm for password encryption.
+- **Node.js** – JavaScript runtime for building backend services  
+- **Express** – Minimalist web framework for Node.js  
+- **Prisma** – Type-safe ORM for working with PostgreSQL  
+- **PostgreSQL** – Relational database for storing user data  
+- **JWT (JSON Web Tokens)** – Authentication and authorization mechanism  
+- **Bcrypt** – Secure hashing algorithm for password encryption  
+- **Docker** – Containerization platform for consistent development environments
 
 ## Features
 
@@ -24,7 +25,7 @@ The API supports the following features:
 Ensure you have the following installed:
 
 - **Node.js**: Download and install it from [Node.js official website](https://nodejs.org/).
-- **MongoDB Atlas**: Sign up for a free MongoDB Atlas account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+- **Docker & Docker Compose**: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
 
 ## Installation
 
@@ -52,21 +53,27 @@ To get this project up and running locally, follow these steps:
      ```
      node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
      ```
-  
-4. **Initialize Prisma**:
-   - Run the following command to generate Prisma client and set up the database:
+4. **Run Docker**
+   
+   - Spin up a PostgreSQL container using Docker Compose:
+     ```
+     docker-compose up -d
+     ```
+5. **Initialize Prisma**:
+   - Run the following commands to generate Prisma client and set up the database:
      ```bash
+     npx prisma migrate dev
      npx prisma generate
      ```
     
-5. **Start the server**:
+6. **Start the server**:
    - Start the backend server by running:
      ```bash
      node server.js
      ```
      The API will be available at: [http://localhost:3000](http://localhost:3000)
 
-6. **Live Demo**:
+7. **Live Demo**:
 
    - The project is deployed and available on **Vercel**:
 
